@@ -1,0 +1,19 @@
+{
+    "name": "kaipi/instafeed",
+    "require": {
+        "facebook/graph-sdk": "^5.0",
+        "jstolpe/instagram-graph-api-php-sdk": "^1.0",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kaipi\\Instafeed\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mike Kaipis",
+            "email": "kaipismike1@gmail.com"
+        }
+    ]
+}

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'kaipi/instafeed',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '8b19c183cb60526e97912a2405f7c3b5e4ad1497',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'kaipi/instafeed' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '8b19c183cb60526e97912a2405f7c3b5e4ad1497',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

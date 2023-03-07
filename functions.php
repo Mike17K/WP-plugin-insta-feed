@@ -21,7 +21,8 @@ use Instagram\User\Media;
 ///////////////////////////////////////////////////
 ///////////////////////////////////////////////////
 
-function auth($data){ // here do all the logins with the insta api and set the $isAuthorized variable to true if is.
+function auth($data)
+{ // here do all the logins with the insta api and set the $isAuthorized variable to true if is.
     $isAuthorized = false;
     $config = array(
         // instantiation config params
@@ -49,7 +50,7 @@ function auth($data){ // here do all the logins with the insta api and set the $
         }
 
         //print_r($newToken);
-        
+
         global $config;
         $config = array(
             // instantiation config params
@@ -58,16 +59,16 @@ function auth($data){ // here do all the logins with the insta api and set the $
             // facebook app id
             'app_secret' => $_ENV['FB_APP_SECRET'] // facebook app secret
         );
-        
-        
-        $media = new Media( $config );
-        
+
+
+        $media = new Media($config);
+
         // initial user media response
         $userMedia = $media->getSelf();
-        
 
+        echo "??";
         $isAuthorized = true;
-        
+
     } else {
 
         $permissions = array(
@@ -93,10 +94,12 @@ function auth($data){ // here do all the logins with the insta api and set the $
 
     return $isAuthorized;
 }
-add_filter('auth-action','auth',10,1);
+add_filter('auth-action', 'auth', 10, 1);
 
-function echo_posts($conndata){                     ///////////////////////////////// fix
+function echo_posts($conndata)
+{ ///////////////////////////////// fix
     // here i need to find the posts of username and take the 8 last
+    // api call : https://www.instagram.com/programmer.me/?__a=1&__d=dis
     global $config;
 
     print_r($config);
@@ -110,7 +113,7 @@ function echo_posts($conndata){                     ////////////////////////////
     echo '<div class="insta-feed-container-item"><img src="img1.png"></div>';
     echo '<div class="insta-feed-container-item"><img src="img1.png"></div>';
 }
-add_action('echo-posts','echo_posts',10,1);
+add_action('echo-posts', 'echo_posts', 10, 1);
 
 ///////////////////////////////////////////////////
 ///////////////////////////////////////////////////
@@ -118,28 +121,30 @@ add_action('echo-posts','echo_posts',10,1);
 
 
 
-function createContainer($conndata){
-    ?>    
-    <div class="insta-feed-container">
-        <?php 
-        if(apply_filters('auth-action',$conndata)){
-            do_action('echo-posts',$conndata);
-        }else{
+function createContainer($conndata)
+{
+    ?>
+<div class="insta-feed-container">
+    <?php
+        if (apply_filters('auth-action', $conndata)) {
+            do_action('echo-posts', $conndata);
+        } else {
             echo 'not auth corectly';
         }
         ?>
-    </div>
-    <?php
+</div>
+<?php
 }
-add_action('create-container-insta-feed','createContainer',10,1);
+add_action('create-container-insta-feed', 'createContainer', 10, 1);
 
-function my_custom_styles($filename){
+function my_custom_styles($filename)
+{
     ?>
-    <link rel="stylesheet" type="text/css" href='<?php echo $filename?>'> <!-- add here the css filename u want -->
-    <?php    
+<link rel="stylesheet" type="text/css" href='<?php echo $filename ?>'> <!-- add here the css filename u want -->
+<?php
 }
-add_action('inline_style', 'my_custom_styles',10,1);
-  
+add_action('inline_style', 'my_custom_styles', 10, 1);
+
 
 
 
